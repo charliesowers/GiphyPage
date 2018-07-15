@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Trivia Game</title>
+        <title>Gifs Page</title>
         <link rel="icon" href="assets/images/logo.png">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -20,12 +20,15 @@
         <div id="buttons-view"></div>
 
         <form id="gif-form">
-        <label for="gif-input">Add a GIF Button</label>
-        <input type="text" id="gif-input">
+            <div class="form-group">
+                <label for="gif-input">Add a Button:</label>
+                <input class="form-control" type="text" id="gif-input">
+            </div>
+        </form>
         <br>
 
         <!-- Button triggers new movie to be added -->
-        <input id="add-gif" type="submit" value="Add a Button">
+        <input class = "btn btn-primary" id="add-gif" type="submit" value="Create New Button">
 
         <div id="gifs-view"></div>
         

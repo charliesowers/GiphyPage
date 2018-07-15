@@ -19,21 +19,37 @@ function displaygifInfo() {
     $("#gifs-view").empty();
 
     for (var i = 0; i < results.length; i++) {
-        var gifDiv = $("<div class='item'>");
+        var gifDiv = $("<div class='item card'>");
 
         var rating = results[i].rating;
+        var title =results[i].title;
+        var movingURL = results[i].images.fixed_height.url
+        var stillURL = results[i].images.fixed_height_still.url
 
-        var p = $("<p>").text("Rating: " + rating);
+        movingURL =  movingURL.substr(0, 8) + 'i' + movingURL.substr(14 );
+        stillURL =  stillURL.substr(0, 8) + 'i' + stillURL.substr(14 );
+
+        var titleDiv = $("<h5 class='card-title'>").text(title);
+        console.log(results[i]);
+        var p = $("<p class='card-text'>").text("Rating: " + rating);
+
+        var download = $("<a class='btn btn-primary' target = '_blank'>").text("Open in new Tab")
+                        .attr("href",movingURL);
+                                
 
         var gifImage = $("<img>");
-        gifImage.attr("src", results[i].images.fixed_height_still.url)
-                .attr("data-still", results[i].images.fixed_height_still.url)
-                .attr("data-animate", results[i].images.fixed_height.url)
+        gifImage.attr("src", stillURL)
+                .attr("alt", "Image Couldn't Load")
+                .attr("data-still", stillURL)
+                .attr("data-animate", movingURL)
                 .attr("data-state","still")
-                .addClass("gif");
-
-        gifDiv.prepend(p);
-        gifDiv.prepend(gifImage);
+                .addClass("gif card-img-top");
+        
+        gifDiv.append(gifImage);
+        gifDiv.append(titleDiv);
+        gifDiv.append(p);
+        gifDiv.append(download);
+        
 
         $("#gifs-view").append(gifDiv);
     }
@@ -51,7 +67,7 @@ function renderButtons() {
   // Looping through the array of gifs
   for (var i = 0; i < topics.length; i++) {
     var a = $("<button>");
-    a.addClass("gif-btn");
+    a.addClass("gif-btn btn btn-primary");
     a.attr("data-name", topics[i]);
     a.text(topics[i]);
     $("#buttons-view").append(a);

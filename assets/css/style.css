@@ -1,3 +1,20 @@
+
+
 .item{
     float: left;
+    margin: 2px;
+    height: 400px;
+
+}
+
+.btn{
+    margin: 2px;
+}
+
+.gif{
+    height: 250px;
+}
+
+form{
+    width: 200px;
 }
